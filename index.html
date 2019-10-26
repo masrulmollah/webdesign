@@ -1,12 +1,59 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <style>
 * {
   box-sizing: border-box;
 }
+/* Style the tab */
+		.tab {
+		    float: left;
+		    border: 1px solid #355C7D;
+		    background-color: #355C7D;
+		    width: 100%;
+		    height: 300px;
+		}
 
+		/* Style the buttons inside the tab */
+		.tab button {
+		    display: block;
+		    background-color: inherit;
+		    color: black;
+		    padding: 22px 16px;
+		    width: 100%;
+		    border: none;
+		    outline: none;
+		    text-align: left;
+		    cursor: pointer;
+		    transition: 0.3s;
+		    font: 400 17px Lato, sans-serif;
+		   	color: white;
+		}
+
+		/* Change background color of buttons on hover */
+		.tab button:hover {
+		    background-color: #eee;
+		    color: black;
+		}
+
+		/* Create an active/current "tab button" class */
+		.tab button.active {
+		    background-color: #ddd;
+		    color: black;
+		    font: 500 25px Lato, sans-serif;
+		}
+
+		/* Style the tab content */
+		.tabcontent {
+		    display: none;
+ 		    float: left;
+		    padding: 0px 12px;
+		    border: 1px solid #ddd;
+		    width: 100%;
+		    height: 300px;
+		}
 .row::after {
   content: "";
   clear: both;
@@ -110,42 +157,77 @@ h1 {background-color: turquoise; font-family:verdana; font-size: 20px; padding:5
 </div>
 
 <div class="row">
-  <div class="col-3 col-s-3 menu">
-    <ul>
-      <li>1 Introduction to VAT</li>
-      <li>2 Application of VAT</li>
-      <li>3 VAT documentation</li>
-      <li>4 Others</li>
-      <li>1 Introduction to VAT</li>
-      <li>2 Application of VAT</li>
-      <li>3 VAT documentation</li>
-      <li>4 Others</li>
-      <li>4 Others</li>    
-      <li>4 Others</li>    
-   </ul>
+  <div class="col-2 col-s-2 menu">
+    <div class="tab">
+		<button class="tablinks" onclick="openCity(event, 'Introduction to VAT')" id="defaultOpen">Introduction to VAT</button>
+		<button class="tablinks" onclick="openCity(event, 'Application of VAT')">Application of VAT</button>
+		<button class="tablinks" onclick="openCity(event, 'VAT documentation')">VAT documentation</button>
+	</div>
+
+	<script>
+		function openCity(evt, cityName) {
+		    var i, tabcontent, tablinks;
+		    tabcontent = document.getElementsByClassName("tabcontent");
+		    for (i = 0; i < tabcontent.length; i++) {
+		        tabcontent[i].style.display = "none";
+		    }
+		    tablinks = document.getElementsByClassName("tablinks");
+		    for (i = 0; i < tablinks.length; i++) {
+		        tablinks[i].className = tablinks[i].className.replace(" active", "");
+		    }
+		    document.getElementById(cityName).style.display = "block";
+		    evt.currentTarget.className += " active";
+		}
+
+		// Get the element with id="defaultOpen" and click on it
+		document.getElementById("defaultOpen").click();
+	</script>
+
   </div>
 
-  <div class="col-6 col-s-9">
-    <h1>Respective act </h1>
-    <p>Please find the respective act related to this topic..</p>
-    <h1>Respective rules</h1>
-    <p>Please find the respective rules related to this topic..</p>
-    <h1>Respective SROs</h1>
-    <p>Please find the respective SROs related to this topic..</p>
+  <div class="col-7 col-s-9">
+  <div id="Introduction to VAT" class="tabcontent">
+		<h3>ACT</h3>
+		<p>Principles of VAT</p>
+                <p>VAT registration & turnover tax enlistment</p>
+		<h3>Rules</h3>
+		<p>Imposition of VAT, SD & turnover tax</p>
+		<h3>SROs</h3>
+		<p>Manner of VAT collection</p> 
+  </div>
+    <div id="Application of VAT" class="tabcontent">
+		<h3>ACT</h3>
+		<p>Net payable and payment</p>
+                <p>Input VAT credit system</p>
+		<h3>Rules</h3>
+		<p>WHT VAT compliance</p>
+		<h3>SROs</h3>
+		<p>Penalty - offence, trial, punishment</p>  
+	</div>
+    <div id="VAT documentation" class="tabcontent">
+		<h3>ACT</h3>
+		<p>VAT documents-invoice & books of records</p>
+                <p>VAT return preparation, correction & submission</p>
+		<h3>Rules</h3>
+		<p>VAT credit adjustment-carry forward and refund</p>
+		<h3>SROs</h3>
+		<p>VAT due collection by govt-recovery of arrear tax</p> 
+	</div>
   </div>
 
   <div class="col-3 col-s-12">
-    <div class="aside">
+      
+      <div class="aside">
       <video width="300" height="200" controls>
       <source src="video.mp4"/>
       </video>
+      <h2>Video</h2>
       <h2>Explanation</h2>
       <p>This is our explanation</p>
       <h2>Example</h2>
       <p>These are the practical examples</p>
-      
       </div>
-  </div>
+</div>
 </div>
 
 <div class="footer">
@@ -168,5 +250,6 @@ No:
 <p>Comment box</p>
  <p>Comment by Mr. Masrul</p>
 </div>
+
 </body>
 </html>
